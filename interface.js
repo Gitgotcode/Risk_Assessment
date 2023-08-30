@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import wc from '../public/witness_calculator';
+import wc from '../circuit_js/witness_calculator';
 
 const Interface = () => {
   const [weights, setWeights] = useState(Array(10).fill(0));
