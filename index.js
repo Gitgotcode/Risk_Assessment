@@ -1,4 +1,4 @@
-import Interface from '../components/Interface.js';
+import Interface from '../Interface.js';
 import Script from "next/script";
 const Index = () => {
     return (
