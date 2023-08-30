@@ -8,36 +8,17 @@ const Interface = () => {
   const [maxRisk, setMaxRisk] = useState(0);
   const [proofAndSignalsBase64, setProofAndSignalsBase64] = useState('');
   const [verificationResult, setVerificationResult] = useState('');
-  
-  const handleWeightChange = (index, value) => {
-    const updatedWeights = [...weights];
-    updatedWeights[index] = parseFloat(value);
-    setWeights(updatedWeights);
-  };
-  
-  const handleRiskChange = (index, value) => {
-    const updatedRisks = [...risks];
-    updatedRisks[index] = parseFloat(value);
-    setRisks(updatedRisks);
-  };
-  
-  const handleMinRiskChange = (value) => {
-    setMinRisk(parseFloat(value));
-  };
-  
-  const handleMaxRiskChange = (value) => {
-    setMaxRisk(parseFloat(value));
-  };
+  const [valid, setValid] = useState('');
+  const [proof,setproof] = useState('');
 
-  const handleCopyProof = (proofAndSignalsBase64) => {
-    if (!isBase64(proofAndSignalsBase64)) {
-      console.error('Invalid base64 format');
-      return;
-    }
+  const handleInputChange = (event, setter) => {
+    setter(event.target.value);
+  };
   
-    navigator.clipboard.writeText(proofAndSignalsBase64)
+  const handleCopyProof = (proofAndPublicSignalsBase64) => {
+    navigator.clipboard.writeText(proofAndPublicSignalsBase64)
       .then(() => {
-        console.log('Copied to clipboard:', proofAndSignalsBase64);
+        console.log('Copied to clipboard:');
         alert('Copied');
       })
       .catch((err) => {
@@ -45,10 +26,11 @@ const Interface = () => {
       });
   };
 
-  const isBase64 = (value) => {
+  function isBase64(value) {
     const base64Pattern = /^[A-Za-z0-9+/]{4}([A-Za-z0-9+/]{4})*([A-Za-z0-9+/]{4}|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{2}==)$/;
+  
     return base64Pattern.test(value);
-  };
+  }
   
   const proofGeneration = async () => {
     const wasmPath = '/circuit.wasm';
