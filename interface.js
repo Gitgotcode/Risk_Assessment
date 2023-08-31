@@ -116,28 +116,45 @@ const Interface = () => {
   
   return (
     <div style={{ fontFamily: 'Arial, sans-serif', textAlign: 'center' }}>
-      {/* ... (Same UI components as before) */}
-  
-      <button onClick={generateProof} style={{ padding: '0.5rem 1rem', marginTop: '1rem' }}>
-        Generate Proof
-      </button>
-  
-      <div>
-        <input
-          type="text"
-          onChange={(e) => setProofAndSignalsBase64(e.target.value)}
-          style={{ padding: '0.5rem', marginRight: '1rem' }}
-        />
-        <button onClick={verifyProof} style={{ padding: '0.5rem 1rem', marginTop: '1rem' }}>
-          Verify Proof
-        </button>
+      <h1 style={{ fontSize: '2rem', marginBottom: '2rem' }}>Risk Assessment</h1>
 
-        {verificationResult && (
-          <p style={{ marginTop: '1rem', color: verificationResult === 'Valid' ? 'green' : 'red' }}>
-            {verificationResult}
-          </p>
-        )}
+      {weights.map((weight, index) => (
+        <div key={index} style={{ marginBottom: '1rem' }}>
+          <label>Weight {index + 1}:</label>
+          <input
+            type="number"
+            value={weight}
+            onChange={(e) => handleWeightChange(index, e.target.value)}
+          />
+          <label>Risk {index + 1}:</label>
+          <input
+            type="number"
+            value={risks[index]}
+            onChange={(e) => handleRiskChange(index, e.target.value)}
+          />
+        </div>
+      ))}
+
+      <div>
+        <label>Minimum Risk:</label>
+        <input
+          type="number"
+          value={minRisk}
+          onChange={(e) => handleMinRiskChange(e.target.value)}
+        />
+        <label>Maximum Risk:</label>
+        <input
+          type="number"
+          value={maxRisk}
+          onChange={(e) => handleMaxRiskChange(e.target.value)}
+        />
       </div>
+
+      <button onClick={calculateRisk} style={{ padding: '0.5rem 1rem', marginTop: '1rem' }}>
+        Calculate Risk
+      </button>
+
+      <div style={{ marginTop: '1rem', fontSize: '1.2rem' }}>{result}</div>
     </div>
   );
 };
