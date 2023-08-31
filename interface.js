@@ -10,11 +10,28 @@ const Interface = () => {
   const [verificationResult, setVerificationResult] = useState('');
   const [valid, setValid] = useState('');
   const [proof,setproof] = useState('');
-
-  const handleInputChange = (event, setter) => {
-    setter(event.target.value);
-  };
   
+  const handleWeightChange = (index, value) => {
+    const updatedWeights = [...weight];
+    updatedWeights[index] = parseFloat(value);
+    setWeights(updatedWeights);
+  };
+
+  const handleRiskChange = (index, value) => {
+    const updatedRisks = [...risk];
+    updatedRisks[index] = parseFloat(value);
+    setRisks(updatedRisks);
+  };
+
+  const handleMinRiskChange = (value) => {
+    setMinRisk(parseFloat(value));
+  };
+
+  const handleMaxRiskChange = (value) => {
+    setMaxRisk(parseFloat(value));
+  };
+
+
   const handleCopyProof = (proofAndPublicSignalsBase64) => {
     navigator.clipboard.writeText(proofAndPublicSignalsBase64)
       .then(() => {
@@ -124,13 +141,13 @@ const Interface = () => {
           <input
             type="number"
             value={weight}
-            onChange={(e) => handleInputChange(e, setWeight)}
+            onChange={(e) => handleWeightChange(index, e.target.value)}
           />
           <label>Risk {index + 1}:</label>
           <input
             type="number"
             value={risk[index]}
-            onChange={(e) => handleInputChange(e, setRisk)}
+            onChange={(e) => handleRiskChange(index, e.target.value)}
           />
         </div>
       ))}
@@ -140,13 +157,13 @@ const Interface = () => {
         <input
           type="number"
           value={minRisk}
-          onChange={(e) => handleInputChange(e, setMinRisk)}
+          onChange={(e) => handleMinRiskChange(index, e.target.value)}
         />
         <label>Maximum Risk:</label>
         <input
           type="number"
           value={maxRisk}
-          onChange={(e) => handleInputChange(e, setMaxRisk)}
+          onChange={(e) => handleMaxRiskChange(index, e.target.value)}
         />
       </div>
 
