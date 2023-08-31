@@ -123,7 +123,7 @@ const Interface = () => {
           <label>Weight {index + 1}:</label>
           <input
             type="number"
-            value={weight}
+            value={weight[index]}
             onChange={(e) => handleInputChange(e, setWeight)}
           />
           <label>Risk {index + 1}:</label>
