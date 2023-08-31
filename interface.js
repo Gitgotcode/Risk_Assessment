@@ -118,7 +118,7 @@ const Interface = () => {
     <div style={{ fontFamily: 'Arial, sans-serif', textAlign: 'center' }}>
       <h1 style={{ fontSize: '2rem', marginBottom: '2rem' }}>Risk Assessment</h1>
 
-      {weight.map((weight, index) => (
+      
         <div key={index} style={{ marginBottom: '1rem' }}>
           <label>Weight {index + 1}:</label>
           <input
@@ -133,7 +133,7 @@ const Interface = () => {
             onChange={(e) => handleInputChange(e, setRisk)}
           />
         </div>
-      ))}
+      
 
       <div>
         <label>Minimum Risk:</label>
