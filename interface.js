@@ -51,8 +51,8 @@ const Interface = () => {
     else {
       const { proof, publicSignals } = await SnarkJS.groth16.fullProve(
         {
-          weight: weights,
-          risk: risks,
+          weight: weight,
+          risk: risk,
           minRisk: minRisk,
           maxRisk: maxRisk,
         },
