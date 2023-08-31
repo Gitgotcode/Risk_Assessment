@@ -14,13 +14,13 @@ const Interface = () => {
   const handleWeightChange = (index, value) => {
     const updatedWeights = [...weight];
     updatedWeights[index] = parseFloat(value);
-    setWeights(updatedWeights);
+    setWeight(updatedWeights);
   };
 
   const handleRiskChange = (index, value) => {
     const updatedRisks = [...risk];
     updatedRisks[index] = parseFloat(value);
-    setRisks(updatedRisks);
+    setRisk(updatedRisks);
   };
 
   const handleMinRiskChange = (value) => {
@@ -133,7 +133,7 @@ const Interface = () => {
   
   return (
     <div style={{ fontFamily: 'Arial, sans-serif', textAlign: 'center' }}>
-      <h1 style={{ fontSize: '2rem', marginBottom: '2rem' }}>Risk Assessment</h1>
+      <h1 style={{ fontSize: '2rem', marginBottom: '2rem' }}>ZKP Portfolio Risk Reporting</h1>
 
       {weight.map((weight, index) => (
         <div key={index} style={{ marginBottom: '1rem' }}>
