@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import wc from './circuit_js/witness_calculator';
 
 const Interface = () => {
-  const [weights, setWeights] = useState(Array(10).fill(0));
-  const [risks, setRisks] = useState(Array(10).fill(0));
+  const [weight, setWeight] = useState(Array(10).fill(0));
+  const [risk, setRisk] = useState(Array(10).fill(0));
   const [minRisk, setMinRisk] = useState(0);
   const [maxRisk, setMaxRisk] = useState(0);
   const [proofAndSignalsBase64, setProofAndSignalsBase64] = useState('');
@@ -118,19 +118,19 @@ const Interface = () => {
     <div style={{ fontFamily: 'Arial, sans-serif', textAlign: 'center' }}>
       <h1 style={{ fontSize: '2rem', marginBottom: '2rem' }}>Risk Assessment</h1>
 
-      {weights.map((weight, index) => (
+      {weight.map((weight, index) => (
         <div key={index} style={{ marginBottom: '1rem' }}>
           <label>Weight {index + 1}:</label>
           <input
             type="number"
             value={weight}
-            onChange={(e) => handleWeightChange(index, e.target.value)}
+            onChange={(e) => handleInputChange(e, setWeight)}
           />
           <label>Risk {index + 1}:</label>
           <input
             type="number"
-            value={risks[index]}
-            onChange={(e) => handleRiskChange(index, e.target.value)}
+            value={risk[index]}
+            onChange={(e) => handleInputChange(e, setRisk)}
           />
         </div>
       ))}
@@ -140,21 +140,57 @@ const Interface = () => {
         <input
           type="number"
           value={minRisk}
-          onChange={(e) => handleMinRiskChange(e.target.value)}
+          onChange={(e) => handleInputChange(e, setMinRisk)}
         />
         <label>Maximum Risk:</label>
         <input
           type="number"
           value={maxRisk}
-          onChange={(e) => handleMaxRiskChange(e.target.value)}
+          onChange={(e) => handleInputChange(e, setMaxRisk)}
         />
       </div>
 
-      <button onClick={calculateRisk} style={{ padding: '0.5rem 1rem', marginTop: '1rem' }}>
-        Calculate Risk
+      <button onClick={proofGeneration} style={{ padding: '0.5rem 1rem', marginTop: '1rem' }}>
+        Generate Proof
       </button>
 
-      <div style={{ marginTop: '1rem', fontSize: '1.2rem' }}>{result}</div>
+      {proofAndPublicSignalsBase64 ? (
+        <div style={{ marginBottom: '2rem' }}>
+          <h2 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Proof and Public Signals:</h2>
+          <textarea
+            value={proofAndPublicSignalsBase64}
+            readOnly
+            style={{ width: '100%', minHeight: '10rem', padding: '0.5rem', marginBottom: '0.5rem' }}
+          />
+          <button
+            onClick={() => handleCopyProof(proofAndPublicSignalsBase64)}
+            style={{ padding: '0.5rem 1rem', backgroundColor: '#f0f0f0', border: 'none', cursor: 'pointer' }}
+          >
+            Copy
+          </button>
+        </div>
+      ) : (
+        <h3></h3>
+      )}
+
+      <div>
+        <h2 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Proof Verification</h2>
+        <input
+          type="text"
+          onChange={(e) => handleInputChange(e, setproof)}
+          style={{ padding: '0.5rem', marginRight: '1rem' }}
+        />
+        <button onClick={proofVerification} style={{ padding: '0.5rem 1rem', marginTop: '1rem' }}>
+          Verify Proof
+        </button>
+      
+        {valid === 'Verification OK, the risk is as per contract terms' && (
+          <p style={{ marginTop: '1rem', color: 'green' }}>{valid}</p>
+        )}
+        {valid === 'Invalid' && (
+          <p style={{ marginTop: '1rem', color: 'red' }}>{valid}</p>
+        )}
+      </div>
     </div>
   );
 };
