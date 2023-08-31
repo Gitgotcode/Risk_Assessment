@@ -31,6 +31,9 @@ const Interface = () => {
     setMaxRisk(parseFloat(value));
   };
 
+  const handleInputChange = (event, setter) => {
+    setter(event.target.value);
+  };
 
   const handleCopyProof = (proofAndPublicSignalsBase64) => {
     navigator.clipboard.writeText(proofAndPublicSignalsBase64)
@@ -157,13 +160,13 @@ const Interface = () => {
         <input
           type="number"
           value={minRisk}
-          onChange={(e) => handleMinRiskChange(index, e.target.value)}
+          onChange={(e) => handleMinRiskChange(e.target.value)}
         />
         <label>Maximum Risk:</label>
         <input
           type="number"
           value={maxRisk}
-          onChange={(e) => handleMaxRiskChange(index, e.target.value)}
+          onChange={(e) => handleMaxRiskChange(e.target.value)}
         />
       </div>
 
