@@ -39,8 +39,8 @@ const Interface = () => {
     const WC = await wc(buffer);
     const SnarkJS = window['snarkjs'];
     const input = {
-      weight: weights,
-      risk: risks,
+      weight: weight,
+      risk: risk,
       minRisk: minRisk,
       maxRisk: maxRisk,
     };
@@ -123,7 +123,7 @@ const Interface = () => {
           <label>Weight {index + 1}:</label>
           <input
             type="number"
-            value={weight[index]}
+            value={weight}
             onChange={(e) => handleInputChange(e, setWeight)}
           />
           <label>Risk {index + 1}:</label>
