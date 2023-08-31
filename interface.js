@@ -6,7 +6,7 @@ const Interface = () => {
   const [risk, setRisk] = useState(Array(10).fill(0));
   const [minRisk, setMinRisk] = useState(0);
   const [maxRisk, setMaxRisk] = useState(0);
-  const [proofAndSignalsBase64, setProofAndSignalsBase64] = useState('');
+  const [proofAndPublicSignalsBase64, setProofAndPublicSignalsBase64] = useState('');
   const [verificationResult, setVerificationResult] = useState('');
   const [valid, setValid] = useState('');
   const [proof,setproof] = useState('');
