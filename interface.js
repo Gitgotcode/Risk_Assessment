@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import wc from '../public/witness_calculator';
+import wc from './public/witness_calculator';
 
 const Interface = () => {
   const [weight, setWeight] = useState(Array(10).fill(0));
@@ -89,7 +89,6 @@ const Interface = () => {
       const proofAndPublicSignalsBase64 = Buffer.from(proofAndPublicSignalsJSON).toString('base64');
       setProofAndPublicSignalsBase64(proofAndPublicSignalsBase64);
     }
-    alert(proofAndPublicSignalsBase64);
   };
   
     
