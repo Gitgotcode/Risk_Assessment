@@ -77,8 +77,8 @@ const Interface = () => {
           minRisk: minRisk,
           maxRisk: maxRisk,
         },
-        '/circuit.wasm',
-        '/circuit_0000.zkey'
+        "/circuit.wasm",
+        "/circuit_0000.zkey"
       );
   
       const proofAndPublicSignals = {
