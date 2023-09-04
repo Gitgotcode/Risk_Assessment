@@ -35,6 +35,7 @@ const Interface = () => {
     setter(event.target.value);
   };
 
+
   const handleCopyProof = (proofAndPublicSignalsBase64) => {
     navigator.clipboard.writeText(proofAndPublicSignalsBase64)
       .then(() => {
