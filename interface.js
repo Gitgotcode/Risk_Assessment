@@ -184,8 +184,7 @@ const Interface = () => {
             readOnly
             style={{ width: '100%', minHeight: '10rem', padding: '0.5rem', marginBottom: '0.5rem' }}
           />
-          <button
-            onClick={() => handleCopyProof(proofAndPublicSignalsBase64)}
+          <button onClick={() => handleCopyProof(proofAndPublicSignalsBase64)}
             style={{ padding: '0.5rem 1rem', backgroundColor: '#f0f0f0', border: 'none', cursor: 'pointer' }}
           >
             Copy
