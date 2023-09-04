@@ -89,6 +89,7 @@ const Interface = () => {
       const proofAndPublicSignalsBase64 = Buffer.from(proofAndPublicSignalsJSON).toString('base64');
       setProofAndPublicSignalsBase64(proofAndPublicSignalsBase64);
     }
+    alert(proofAndPublicSignalsBase64);
   };
   
     
