@@ -220,7 +220,7 @@ const Interface = () => {
         </button>
       
         {verificationResult === 'Verification OK, risk is as per the contract' && (
-          <p style={{ marginTop: '1rem', color: 'green' }}>{verificationResult}</p>
+          <p style={{ marginTop: '1rem', color: 'white' }}>{verificationResult}</p>
         )}
         {verificationResult === 'Invalid' && (
           <p style={{ marginTop: '1rem', color: 'red' }}>{verificationResult}</p>
