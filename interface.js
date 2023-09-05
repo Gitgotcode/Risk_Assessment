@@ -143,24 +143,26 @@ const Interface = () => {
     
   
   return (
-    <div style={{ fontFamily: 'Arial, sans-serif', textAlign: 'center', backgroundColor: '#008080' }}>
+    <div style={{ fontFamily: 'Arial, sans-serif', textAlign: 'center', backgroundColor: '#0ddfe0ff' }}>
       <h1 style={{ fontSize: '2rem', marginBottom: '2rem' }}>ZKP Portfolio Risk Reporting</h1>
 
       {weight.map((weight, index) => (
         <div key={index} style={{ marginBottom: '1rem' }}>
-          <label>Asset Name {index + 1}:</label>
+          <label style={{ marginRight: '1rem' }}>Asset Name {index + 1}:</label>
           <input
             type="text" 
             value={assetName[index]}
             onChange={(e) => handleAssetNameChange(index, e.target.value)}
+            style={{ marginRight: '1rem' }}
           />
-          <label>Risk {index + 1}:</label>
+          <label style={{ marginRight: '1rem' }}>Risk {index + 1}:</label>
           <input
             type="number"
             value={risk[index]}
             onChange={(e) => handleRiskChange(index, e.target.value)}
+            style={{ marginRight: '1rem' }}
           />
-          <label>Weight {index + 1}:</label>
+          <label style={{ marginRight: '1rem' }}>Weight {index + 1}:</label>
           <input
             type="number"
             value={weight}
