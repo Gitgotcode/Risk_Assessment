@@ -148,21 +148,21 @@ const Interface = () => {
 
       {weight.map((weight, index) => (
         <div key={index} style={{ marginBottom: '1rem' }}>
-          <label style={{ marginRight: '1rem' }}>Asset Name {index + 1}:</label>
+          <label>Asset Name {index + 1}:</label>
           <input
             type="text" 
             value={assetName[index]}
             onChange={(e) => handleAssetNameChange(index, e.target.value)}
             style={{ marginRight: '1rem' }}
           />
-          <label style={{ marginRight: '1rem' }}>Risk {index + 1}:</label>
+          <label>Risk {index + 1}:</label>
           <input
             type="number"
             value={risk[index]}
             onChange={(e) => handleRiskChange(index, e.target.value)}
             style={{ marginRight: '1rem' }}
           />
-          <label style={{ marginRight: '1rem' }}>Weight {index + 1}:</label>
+          <label>Weight {index + 1}:</label>
           <input
             type="number"
             value={weight}
