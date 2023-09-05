@@ -70,15 +70,15 @@ const Interface = () => {
       alert('invalid values')
     } 
     else {
-      const { proof, publicSignals } = await SnarkJS.groth16.fullProve(
+      const { proof, publicSignals } = await SnarkJS.groth16.prove(
         {
           weight: weight,
           risk: risk,
           minRisk: minRisk,
           maxRisk: maxRisk,
         },
-        "public/circuit.wasm",
-        "public/circuit_0000.zkey"
+        "/circuit.wasm",
+        "/circuit_0000.zkey"
       );
   
       const proofAndPublicSignals = {
