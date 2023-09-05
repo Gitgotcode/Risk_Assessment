@@ -151,7 +151,7 @@ const Interface = () => {
           <label>Asset Name {index + 1}:</label>
           <input
             type="text" 
-            value={assetName}
+            value={assetName[index]}
             onChange={(e) => handleAssetNameChange(index, e.target.value)}
           />
           <label>Risk {index + 1}:</label>
