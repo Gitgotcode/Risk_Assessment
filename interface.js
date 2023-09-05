@@ -110,7 +110,7 @@ const Interface = () => {
       }
     }
       
-    const SnarkJS = window['snarkjs'];
+    const { groth16 } = window.snarkjs;
     let proofObject;
     if(!isBase64(proof)){
       alert('please enter valid base64 proof');
@@ -121,7 +121,7 @@ const Interface = () => {
     try{
       const vKeyResponse = await fetch('/verification_key.json');
       const vKey = await vKeyResponse.json();
-      const res = await SnarkJS.groth16.verify(vKey, proofObject.publicSignals, proofObject.proof);
+      const res = await groth16.verify(vKey, proofObject.publicSignals, proofObject.proof);
       if (res === true) {
         setValid('Verification OK, risk is as per the contract');
       } else {
