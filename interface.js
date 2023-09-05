@@ -66,19 +66,19 @@ const Interface = () => {
       maxRisk: maxRisk,
     };
     const r = await WC.calculateWitness(input, 0);
-    if (r[1] == 0) {
-      alert('invalid values')
-    } 
-    else {
-      const { proof, publicSignals } = await SnarkJS.groth.genProof(
+    //if (r[1] == 0) {
+      //alert('invalid values')
+   // } 
+    //else {
+      const { proof, publicSignals } = await SnarkJS.groth16.fullProve(
         {
           weight: weight,
           risk: risk,
           minRisk: minRisk,
           maxRisk: maxRisk,
         },
-        "/circuit.wasm",
-        "/circuit_0000.zkey"
+        '/circuit.wasm',
+        '/circuit_0000.zkey'
       );
   
       const proofAndPublicSignals = {
@@ -88,7 +88,7 @@ const Interface = () => {
       const proofAndPublicSignalsJSON = JSON.stringify(proofAndPublicSignals);
       const proofAndPublicSignalsBase64 = Buffer.from(proofAndPublicSignalsJSON).toString('base64');
       setProofAndPublicSignalsBase64(proofAndPublicSignalsBase64);
-    }
+    //}
   };
   
     
