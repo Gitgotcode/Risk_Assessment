@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import wc from './public/witness_calculator';
-import { groth16 } from "snarkjs";
 
 const Interface = () => {
   const [weight, setWeight] = useState(Array(10).fill(0));
@@ -59,7 +58,7 @@ const Interface = () => {
     const res = await fetch(wasmPath);
     const buffer = await res.arrayBuffer();
     const WC = await wc(buffer);
-    const SnarkJS = window['snarkjs'];
+    const { groth16 } = window.snarkjs;
     const input = {
       weight: weight,
       risk: risk,
