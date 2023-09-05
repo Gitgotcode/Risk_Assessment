@@ -52,38 +52,25 @@ const Interface = () => {
   
     return base64Pattern.test(value);
   }
+  
   const proofGeneration = async () => {
     const wasmPath = '/circuit.wasm';
-    console.log("Fetching wasmPath:", wasmPath);
     const res = await fetch(wasmPath);
-    console.log("Fetch complete");
-  
     const buffer = await res.arrayBuffer();
-    console.log("ArrayBuffer created");
-  
     const WC = await wc(buffer);
-    console.log("wc initialized");
-  
     const SnarkJS = window['snarkjs'];
-    console.log("snarkjs initialized");
-  
     const input = {
       weight: weight,
       risk: risk,
       minRisk: minRisk,
       maxRisk: maxRisk,
     };
-    
-    console.log("Input data:", input);
-  
     const r = await WC.calculateWitness(input, 0);
-    console.log("Witness calculated:", r);
-  
     if (r[1] == 0) {
-      console.log('Invalid values');
-      alert('invalid values');
-    } else {
-      const { proof, publicSignals } = await SnarkJS.groth.fullProve(
+      alert('invalid values')
+    } 
+    else {
+      const { proof, publicSignals } = await SnarkJS.groth.genProof(
         {
           weight: weight,
           risk: risk,
@@ -94,26 +81,17 @@ const Interface = () => {
         "/circuit_0000.zkey"
       );
   
-      console.log("Proof generated:", proof);
-      console.log("Public Signals:", publicSignals);
-  
       const proofAndPublicSignals = {
         proof: proof,
         publicSignals: publicSignals,
       };
-      
-      console.log("Proof and Public Signals:", proofAndPublicSignals);
-  
       const proofAndPublicSignalsJSON = JSON.stringify(proofAndPublicSignals);
-      console.log("JSON stringified:", proofAndPublicSignalsJSON);
-  
       const proofAndPublicSignalsBase64 = Buffer.from(proofAndPublicSignalsJSON).toString('base64');
-      console.log("Base64 encoded:", proofAndPublicSignalsBase64);
-      
       setProofAndPublicSignalsBase64(proofAndPublicSignalsBase64);
     }
   };
   
+    
   const proofVerification = async () => {
     function decodeBase64(proof) {
       if (!isBase64(proof)) {
