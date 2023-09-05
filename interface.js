@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import wc from './public/witness_calculator';
+import { groth16 } from "snarkjs";
 
 const Interface = () => {
   const [weight, setWeight] = useState(Array(10).fill(0));
@@ -66,11 +67,11 @@ const Interface = () => {
       maxRisk: maxRisk,
     };
     const r = await WC.calculateWitness(input, 0);
-    //if (r[1] == 0) {
-      //alert('invalid values')
-   // } 
-    //else {
-      const { proof, publicSignals } = await SnarkJS.groth16.fullProve(
+    if (r[1] == 0) {
+      alert('invalid values')
+    } 
+    else {
+      const { proof, publicSignals } = await groth16.fullProve(
         {
           weight: weight,
           risk: risk,
@@ -88,7 +89,7 @@ const Interface = () => {
       const proofAndPublicSignalsJSON = JSON.stringify(proofAndPublicSignals);
       const proofAndPublicSignalsBase64 = Buffer.from(proofAndPublicSignalsJSON).toString('base64');
       setProofAndPublicSignalsBase64(proofAndPublicSignalsBase64);
-    //}
+    }
   };
   
     
