@@ -65,12 +65,13 @@ const Interface = () => {
       minRisk: minRisk,
       maxRisk: maxRisk,
     };
+    console.log(SnarkJS);
     const r = await WC.calculateWitness(input, 0);
     if (r[1] == 0) {
       alert('invalid values')
     } 
     else {
-      const { proof, publicSignals } = await SnarkJS.groth16.prove(
+      const { proof, publicSignals } = await SnarkJS.groth16.fullProve(
         {
           weight: weight,
           risk: risk,
