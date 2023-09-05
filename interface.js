@@ -143,7 +143,7 @@ const Interface = () => {
     
   
   return (
-    <div style={{ fontFamily: 'Arial, sans-serif', textAlign: 'center' }}>
+    <div style={{ fontFamily: 'Arial, sans-serif', textAlign: 'center', backgroundColor: '#008080' }}>
       <h1 style={{ fontSize: '2rem', marginBottom: '2rem' }}>ZKP Portfolio Risk Reporting</h1>
 
       {weight.map((weight, index) => (
