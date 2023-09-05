@@ -204,7 +204,7 @@ const Interface = () => {
           Verify Proof
         </button>
       
-        {valid === 'Verification OK, the risk is as per contract terms' && (
+        {valid === 'Verification OK, risk is as per the contract' && (
           <p style={{ marginTop: '1rem', color: 'green' }}>{valid}</p>
         )}
         {valid === 'Invalid' && (
