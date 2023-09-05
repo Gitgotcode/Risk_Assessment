@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import wc from './public/witness_calculator';
 
 const Interface = () => {
+  const [assetName, setAssetName] = useState(Array(10).fill(0));
   const [weight, setWeight] = useState(Array(10).fill(0));
   const [risk, setRisk] = useState(Array(10).fill(0));
   const [minRisk, setMinRisk] = useState(0);
@@ -11,6 +12,12 @@ const Interface = () => {
   const [valid, setValid] = useState('');
   const [proof,setproof] = useState('');
   
+  const handleAssetNameChange = (index, value) => {
+    const updatedAssetName = [...assetName];
+    updatedAssetName[index] = value;
+    setAssetName(updatedAssetName);
+  }
+
   const handleWeightChange = (index, value) => {
     const updatedWeights = [...weight];
     updatedWeights[index] = parseFloat(value);
@@ -141,17 +148,23 @@ const Interface = () => {
 
       {weight.map((weight, index) => (
         <div key={index} style={{ marginBottom: '1rem' }}>
-          <label>Weight {index + 1}:</label>
+          <label>Asset Name {index + 1}:</label>
           <input
-            type="number"
-            value={weight}
-            onChange={(e) => handleWeightChange(index, e.target.value)}
+            type="text" 
+            value={assetName}
+            onChange={(e) => handleAssetNameChange(index, e.target.value)}
           />
           <label>Risk {index + 1}:</label>
           <input
             type="number"
             value={risk[index]}
             onChange={(e) => handleRiskChange(index, e.target.value)}
+          />
+          <label>Weight {index + 1}:</label>
+          <input
+            type="number"
+            value={weight}
+            onChange={(e) => handleWeightChange(index, e.target.value)}
           />
         </div>
       ))}
