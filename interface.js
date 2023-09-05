@@ -130,9 +130,9 @@ const Interface = () => {
       const vKey = await vKeyResponse.json();
       const res = await groth16.verify(vKey, proofObject.publicSignals, proofObject.proof);
       if (res === true) {
-        setVerificationResult('Verification OK, risk is as per the contract');
+        setVerificationResult('VERIFICATION SUCCESS! Your Portfolio Risk Is within the defined Limits.');
       } else {
-        setVerificationResult('Invalid');
+        setVerificationResult('Risk is not within the limits');
       }
     }catch(e){
       alert('please enter valid base64 proof');
@@ -143,7 +143,7 @@ const Interface = () => {
     
   
   return (
-    <div style={{ fontFamily: 'Arial, sans-serif', textAlign: 'center', backgroundColor: '#0ddfe0ff' }}>
+    <div style={{ fontFamily: 'Arial, sans-serif', textAlign: 'center', backgroundColor: '#23d29dff' }}>
       <h1 style={{ fontSize: '2rem', marginBottom: '2rem' }}>ZKP Portfolio Risk Reporting</h1>
 
       {weight.map((weight, index) => (
@@ -219,10 +219,10 @@ const Interface = () => {
           Verify Proof
         </button>
       
-        {verificationResult === 'Verification OK, risk is as per the contract' && (
-          <p style={{ marginTop: '1rem', color: 'white' }}>{verificationResult}</p>
+        {verificationResult === 'VERIFICATION SUCCESS! Your Portfolio Risk Is within the defined Limits.' && (
+          <p style={{ marginTop: '1rem', color: '#0b5394ff' }}>{verificationResult}</p>
         )}
-        {verificationResult === 'Invalid' && (
+        {verificationResult === 'Risk is not within the limits' && (
           <p style={{ marginTop: '1rem', color: 'red' }}>{verificationResult}</p>
         )}
       </div>
