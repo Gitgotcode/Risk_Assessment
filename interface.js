@@ -65,7 +65,6 @@ const Interface = () => {
       minRisk: minRisk,
       maxRisk: maxRisk,
     };
-    console.log(SnarkJS);
     const r = await WC.calculateWitness(input, 0);
     if (r[1] == 0) {
       alert('invalid values')
