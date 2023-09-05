@@ -123,9 +123,9 @@ const Interface = () => {
       const vKey = await vKeyResponse.json();
       const res = await groth16.verify(vKey, proofObject.publicSignals, proofObject.proof);
       if (res === true) {
-        setValid('Verification OK, risk is as per the contract');
+        setVerificationResult('Verification OK, risk is as per the contract');
       } else {
-        setValid('Invalid');
+        setVerificationResult('Invalid');
       }
     }catch(e){
       alert('please enter valid base64 proof');
@@ -204,11 +204,11 @@ const Interface = () => {
           Verify Proof
         </button>
       
-        {valid === 'Verification OK, risk is as per the contract' && (
-          <p style={{ marginTop: '1rem', color: 'green' }}>{valid}</p>
+        {verificationResult === 'Verification OK, risk is as per the contract' && (
+          <p style={{ marginTop: '1rem', color: 'green' }}>{verificationResult}</p>
         )}
-        {valid === 'Invalid' && (
-          <p style={{ marginTop: '1rem', color: 'red' }}>{valid}</p>
+        {verificationResult === 'Invalid' && (
+          <p style={{ marginTop: '1rem', color: 'red' }}>{verificationResult}</p>
         )}
       </div>
     </div>
