@@ -83,7 +83,7 @@ const Interface = () => {
       console.log('Invalid values');
       alert('invalid values');
     } else {
-      const { proof, publicSignals } = await SnarkJS.groth16.fullProve(
+      const { proof, publicSignals } = await SnarkJS.groth.fullProve(
         {
           weight: weight,
           risk: risk,
