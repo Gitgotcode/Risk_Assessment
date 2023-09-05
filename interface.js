@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import wc from './public/witness_calculator';
 
 const Interface = () => {
-  const [assetName, setAssetName] = useState(Array(10).fill(0));
+  const [assetName, setAssetName] = useState(Array(10).fill(''));
   const [weight, setWeight] = useState(Array(10).fill(0));
   const [risk, setRisk] = useState(Array(10).fill(0));
   const [minRisk, setMinRisk] = useState(0);
